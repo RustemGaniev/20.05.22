@@ -9,25 +9,28 @@ import java.util.*;
 
 public class PostRepository {
   private Map<Long, Post> posts = new HashMap<>();
-  private long id = 1;
+
   public List<Post> all() {
 
     return new ArrayList<>(posts.values());
   }
 
-  public Optional<Post> getById(long id) {
-    return Optional.ofNullable(posts.get(id));
+  public Post getById(long id) {
+
+    return posts.get(id);
   }
 
   public synchronized Post save(Post post) {
-    Post newPost = new Post(id, post.getContent());
+
+    Post newPost = new Post(post.getId(), post.getContent());
+    long id = post.getId();
     post.setId(id);
     posts.put(id, newPost);
-    id++;
-    return newPost;
+        return newPost;
   }
 
   public synchronized void removeById(long id) {
+
     posts.remove(id);
   }
 }

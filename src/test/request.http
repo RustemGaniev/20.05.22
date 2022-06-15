@@ -1,5 +1,6 @@
 
-GET http://localhost:8080/api/posts/1
+GET http://localhost:8080/api/posts
+
 
 
 Content-Type: application/json
@@ -10,10 +11,10 @@ POST http://localhost:8080/api/posts
 Content-Type: application/json
 
 {
-  "id": 12,
-  "content": "Ganiev Rustem"
+  "id": 328,
+  "content": "Ganiev Rustem 8"
 }
 
 ###
 
-DELETE http://localhost:808/api/posts/2
+DELETE http://localhost:808/api/posts/8

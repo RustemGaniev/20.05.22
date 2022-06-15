@@ -28,15 +28,19 @@ public class MainServlet extends HttpServlet {
    @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     final var path = req.getRequestURI();
-    if (path.equals(API_POSTS_PATH)) {
+
+     if (path.equals(API_POST_ID)) {
+
+       var id = Long.parseLong(path.substring(path.lastIndexOf(SLASH)));
+       System.out.println("ID поста = " + id);
+       controller.getById(id, resp);
+       return;
+     }
+       if (path.equals(API_POSTS_PATH)) {
       controller.all(resp);
       return;
-    }
-    if (path.equals(API_POST_ID)) {
-           final var id = Long.parseLong(path.substring(path.lastIndexOf(SLASH)));
-      System.out.println("ID поста = " + id);
-      controller.getById(id, resp);
-      return;
+
+
     }
     super.doGet(req, resp);
   }
